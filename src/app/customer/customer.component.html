@@ -1,0 +1,32 @@
+<h1>Customer</h1>
+<form (ngSubmit)="!customerForm.invalid && saveCustomer()" #customerForm="ngForm">
+    <div class="alert alert-warning" *ngIf="customerForm.dirty && customerForm.invalid">Form invalid</div>
+    <div class="alert alert-warning" *ngIf="name.invalid && name.dirty">Name not blank</div>
+    <div class="alert alert-warning" *ngIf="age.invalid && age.dirty">Age is number </div>
+    <div class="alert alert-warning" *ngIf="branch.invalid && branch.dirty">Branch not blank</div>
+    <div class="alert alert-warning" *ngIf="createdDate.invalid && createdDate.dirty">Created Date not blank</div>
+
+    <div class="container">
+        <fieldset class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" #name="ngModel"
+                required="required" class="form-control" [(ngModel)]="customer.name">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Age</label>
+            <input type="text" name="age" #age="ngModel" 
+                required="required" class="form-control" [(ngModel)]="customer.age">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Branch</label>
+            <input type="text" name="branch" #branch="ngModel"
+                 required="required" class="form-control" [(ngModel)]="customer.branch">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Created Date</label>
+            <input type="date" name="createdDate" #createdDate="ngModel" required="required" class="form-control"
+                [ngModel]="customer.createdDate | date:'yyyy-MM-dd'" (ngModelChange)="customer.createdDate = $event">
+        </fieldset>
+        <button type="submit" class="btn btn-success">Save</button>
+    </div>
+</form>
