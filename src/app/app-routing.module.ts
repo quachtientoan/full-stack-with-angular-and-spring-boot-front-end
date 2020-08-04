@@ -1,3 +1,6 @@
+import { UploadFilesComponent } from './upload-files/upload-files.component';
+
+import { RegisterComponent } from './register/register.component';
 import { TodoComponent } from './todo/todo.component';
 import { TodosComponent } from './todos/todos.component';
 import { CustomerComponent } from './customer/customer.component';
@@ -14,6 +17,8 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {path : '', component : LoginComponent},
   {path : 'login', component : LoginComponent},
+  {path : 'register', component : RegisterComponent},
+  {path : 'document', component : UploadFilesComponent},
   {path : 'welcome/:name', component : WelcomeComponent, canActivate : [RouteGuardService]},
   {path : 'customer', component : ListCustomersComponent, canActivate : [RouteGuardService]},
   {path : 'customer/:id', component : CustomerComponent, canActivate : [RouteGuardService]},

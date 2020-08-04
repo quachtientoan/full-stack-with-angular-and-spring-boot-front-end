@@ -15,7 +15,9 @@ import { LogoutComponent } from './logout/logout.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CustomerComponent } from './customer/customer.component';
 import { TodosComponent } from './todos/todos.component';
-import { TodoComponent } from './todo/todo.component'
+import { TodoComponent } from './todo/todo.component';
+import { RegisterComponent } from './register/register.component';
+import { UploadFilesComponent } from './upload-files/upload-files.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { TodoComponent } from './todo/todo.component'
     LogoutComponent,
     CustomerComponent,
     TodosComponent,
-    TodoComponent
+    TodoComponent,
+    RegisterComponent,
+    UploadFilesComponent
   ],
   imports: [
     BrowserModule,

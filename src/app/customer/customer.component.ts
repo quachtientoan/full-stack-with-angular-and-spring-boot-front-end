@@ -45,7 +45,9 @@ export class CustomerComponent implements OnInit {
         }
       )
     }else{
+      console.log("update");
       this.service.updateCustomer('admin',this.id,this.customer).subscribe(
+        
         data => {
           this.router.navigate(['customer'])
         }

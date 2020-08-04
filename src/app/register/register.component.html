@@ -1,0 +1,32 @@
+<h1>Register</h1>
+<form (ngSubmit)="saveRegister()">
+    <!-- <div class="alert alert-warning" *ngIf="customerForm.dirty && customerForm.invalid">Form invalid</div>
+    <div class="alert alert-warning" *ngIf="name.invalid && name.dirty">Name not blank</div>
+    <div class="alert alert-warning" *ngIf="age.invalid && age.dirty">Age is number </div>
+    <div class="alert alert-warning" *ngIf="branch.invalid && branch.dirty">Branch not blank</div>
+    <div class="alert alert-warning" *ngIf="createdDate.invalid && createdDate.dirty">Created Date not blank</div> -->
+    <div class="alert alert-warning" *ngIf ="message">Duplicate Username</div>
+    <div class="container">
+        <fieldset class="form-group">
+            <label>Username</label>
+            <input type="text" name="username" placeholder="username" [(ngModel)] = "user.username" required="required" class="form-control" >
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="password" required="required" [(ngModel)] = "user.password" class="form-control">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Retype Password</label>
+            <input type="password" name="retypePassword" placeholder="retype password" required="required" class="form-control">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Email</label>
+            <input type="text" name="email" placeholder="email" required="required" [(ngModel)] = "user.email" class="form-control">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Role</label>
+            <input type="text" name="email" placeholder="role" required="required" [(ngModel)] = "user.role" class="form-control">
+        </fieldset>
+        <button type="submit" class="btn btn-success">Save</button>
+    </div>
+</form>

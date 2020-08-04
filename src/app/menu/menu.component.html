@@ -7,9 +7,11 @@
                 <li><a *ngIf="hardcodeAuthenticationService.isUserLoggedIn()" routerLink="/welcome/admin" class="nav-link">Welcome</a></li>
                 <li><a *ngIf="hardcodeAuthenticationService.isUserLoggedIn()" routerLink="/customer" class="nav-link">Customer</a></li>
                 <li><a *ngIf="hardcodeAuthenticationService.isUserLoggedIn()" routerLink="/todo" class="nav-link">Todo</a></li>
+                <li><a *ngIf="hardcodeAuthenticationService.isUserLoggedIn()" routerLink="/document" class="nav-link">Document</a></li>
 
             </ul>
             <ul class="navbar-nav navbar-collapse justify-content-end">
+                <li><a *ngIf="!hardcodeAuthenticationService.isUserLoggedIn()" routerLink="/register" class="nav-link">Register</a></li>
                 <li><a *ngIf="!hardcodeAuthenticationService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
                 <li><a *ngIf="hardcodeAuthenticationService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li>
             </ul>

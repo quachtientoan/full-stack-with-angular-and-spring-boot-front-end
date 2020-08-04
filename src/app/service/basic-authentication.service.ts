@@ -1,3 +1,4 @@
+// import { TOKEN } from './basic-authentication.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators'
@@ -14,6 +15,20 @@ export class BasicAuthenticationService {
   constructor(
     private http: HttpClient
   ) { }
+
+  executeJWTAuthenticationService(username, password) {
+  
+
+    return this.http.post<any>(`${API_URL}/authenticate`,{username,password}).pipe(
+       map(
+         data => {
+          sessionStorage.setItem(AUTHENTICATED_USER, username);
+          sessionStorage.setItem(TOKEN, `Bearer ${data.token}` )
+          return data;
+         }
+       )
+     );
+  }
 
   executeBasicAuthenticationService(username, password) {
   
