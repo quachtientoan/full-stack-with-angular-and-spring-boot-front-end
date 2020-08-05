@@ -26,9 +26,9 @@ export class UploadFilesComponent implements OnInit {
     this.selectedFiles = event.target.files;
   }
 
-  upload() {
+  upload(input: HTMLInputElement) {
     this.progress = 0;
-  
+
     this.currentFile = this.selectedFiles.item(0);
     this.uploadService.upload(this.currentFile).subscribe(
       event => {
@@ -37,6 +37,7 @@ export class UploadFilesComponent implements OnInit {
         } else if (event instanceof HttpResponse) {
           this.message = event.body.message;
           this.fileInfos = this.uploadService.getFiles();
+          input.value = '';
         }
       },
       err => {
@@ -44,7 +45,7 @@ export class UploadFilesComponent implements OnInit {
         this.message = 'Could not upload the file!';
         this.currentFile = undefined;
       });
-  
+
     this.selectedFiles = undefined;
   }
 

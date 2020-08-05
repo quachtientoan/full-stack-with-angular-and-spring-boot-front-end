@@ -2,7 +2,7 @@
     <h1>Document</h1>
 </div>
 
-<div *ngIf="currentFile" class="progress">
+<!-- <div *ngIf="currentFile" class="progress">
     <div
       class="progress-bar progress-bar-info progress-bar-striped"
       role="progressbar"
@@ -13,17 +13,17 @@
     >
       {{ progress }}%
     </div>
-  </div>
+  </div> -->
   
   <label class="btn btn-default">
-    <input type="file" (change)="selectFile($event)" />
+    <input type="file" #file (change)="selectFile($event)" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
   </label>
   
-  <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+  <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload(file)">
     Upload
   </button>
   
-  <div class="alert alert-light" role="alert">{{ message }}</div>
+  <div class="alert alert-warning" role="alert" *ngIf="message">{{ message }}</div>
   
   <div class="card">
     <div class="card-header">List of Files</div>

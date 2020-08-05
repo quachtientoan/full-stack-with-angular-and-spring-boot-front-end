@@ -5,7 +5,7 @@
     <div class="alert alert-warning" *ngIf="age.invalid && age.dirty">Age is number </div>
     <div class="alert alert-warning" *ngIf="branch.invalid && branch.dirty">Branch not blank</div>
     <div class="alert alert-warning" *ngIf="createdDate.invalid && createdDate.dirty">Created Date not blank</div> -->
-    <div class="alert alert-warning" *ngIf ="message">Duplicate Username</div>
+    <div class="alert alert-warning" *ngIf ="message">{{ message }}</div>
     <div class="container">
         <fieldset class="form-group">
             <label>Username</label>
@@ -16,8 +16,8 @@
             <input type="password" name="password" placeholder="password" required="required" [(ngModel)] = "user.password" class="form-control">
         </fieldset>
         <fieldset class="form-group">
-            <label>Retype Password</label>
-            <input type="password" name="retypePassword" placeholder="retype password" required="required" class="form-control">
+            <label>Password confirm</label>
+            <input type="password" name="retypePassword" placeholder="retype password" [(ngModel)]="retypePassword" required="required" class="form-control">
         </fieldset>
         <fieldset class="form-group">
             <label>Email</label>
