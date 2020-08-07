@@ -1,0 +1,46 @@
+<h1>Money Tranfer</h1>
+
+<form (ngSubmit)="!moneyTranferForm.invalid && save()" #moneyTranferForm="ngForm" class="moneyTranferForm">
+    <div class="container">
+        <fieldset class="form-group">
+            <label>Money transfer date</label>
+            <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="tranferDate" ngbDatepicker #d="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" (click)="d.toggle()" type="button">
+                    <i class="la la-calendar"></i>
+                  </button>
+                </div>
+            </div>
+            <!-- <input type="text" name="tranferDate" required="required" class="form-control"> -->
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Source account</label>
+            <input type="text" name="sourceAcc" required="required" class="form-control">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Recipient's Name / Account</label>
+            <input type="text" name="recNameAcc" required="required" class="form-control">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Receiving bank</label>
+            <input type="text" name="recBank" required="required" class="form-control">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Amount of money</label>
+            <input type="text" name="amount" required="required" class="form-control">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>content</label>
+            <input type="text" name="content" required="required" class="form-control">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label> Payer (receiver, sender)</label>
+            <input type="text" name="payer" required="required" class="form-control">
+        </fieldset>
+        <button type="submit" class="btn btn-success">Save</button>
+    </div>
+</form>

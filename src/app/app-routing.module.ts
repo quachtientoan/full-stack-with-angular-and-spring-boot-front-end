@@ -13,6 +13,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { MoneyTranferComponent } from './money-tranfer/money-tranfer.component';
 
 const routes: Routes = [
   {path : '', component : LoginComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path : 'customer/:id', component : CustomerComponent, canActivate : [RouteGuardService]},
   {path : 'todo', component : TodosComponent, canActivate : [RouteGuardService]},
   {path : 'todo/:id', component : TodoComponent, canActivate : [RouteGuardService]},
+  {path : 'money-tranfer', component : MoneyTranferComponent, canActivate : [RouteGuardService]},
   {path : 'logout', component : LogoutComponent, canActivate : [RouteGuardService]},
   {path : '**', component : ErrorComponent}
 ];

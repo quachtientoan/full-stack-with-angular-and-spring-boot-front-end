@@ -17,7 +17,9 @@ import { CustomerComponent } from './customer/customer.component';
 import { TodosComponent } from './todos/todos.component';
 import { TodoComponent } from './todo/todo.component';
 import { RegisterComponent } from './register/register.component';
-import { UploadFilesComponent } from './upload-files/upload-files.component'
+import { UploadFilesComponent } from './upload-files/upload-files.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MoneyTranferComponent } from './money-tranfer/money-tranfer.component'
 
 @NgModule({
   declarations: [
@@ -33,13 +35,15 @@ import { UploadFilesComponent } from './upload-files/upload-files.component'
     TodosComponent,
     TodoComponent,
     RegisterComponent,
-    UploadFilesComponent
+    UploadFilesComponent,
+    MoneyTranferComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [
     {provide : HTTP_INTERCEPTORS, useClass : HttpIntercepteBasicAuthService, multi :true}
