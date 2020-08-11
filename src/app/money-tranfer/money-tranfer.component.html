@@ -1,46 +1,54 @@
 <h1>Money Tranfer</h1>
+<p-toast></p-toast>
+<p-dialog header="Title" [(visible)]="display" [style]="{width: '50vw'}">
+    {{message}}
+</p-dialog>
 
-<form (ngSubmit)="!moneyTranferForm.invalid && save()" #moneyTranferForm="ngForm" class="moneyTranferForm">
-    <div class="container">
+<!-- <button type="button" (click)="showDialog()" icon="pi pi-info-circle" label="Show">click show dialog</button> -->
+<!-- <form (ngSubmit)="!moneyTranferForm.invalid && save()" #moneyTranferForm="ngForm" class="moneyTranferForm"> -->
+    <div class="container moneyTranferForm" >
         <fieldset class="form-group">
             <label>Money transfer date</label>
-            <div class="input-group">
-                <input class="form-control" placeholder="yyyy-mm-dd" name="tranferDate" ngbDatepicker #d="ngbDatepicker">
-                <div class="input-group-append">
-                  <button class="btn btn-primary" (click)="d.toggle()" type="button">
-                    <i class="la la-calendar"></i>
-                  </button>
-                </div>
+            <div>
+                <p-calendar [(ngModel)]="moneyTranfer.moneyTranferDate" dateFormat="dd/mm/yy" [style]="{'width':'100%'}" [showIcon]="true"></p-calendar>
             </div>
-            <!-- <input type="text" name="tranferDate" required="required" class="form-control"> -->
-        </fieldset>
+        </fieldset>   
         <fieldset class="form-group">
             <label>Source account</label>
-            <input type="text" name="sourceAcc" required="required" class="form-control">
+            <div>
+                <p-dropdown placeholder="Select a Account" [options]="sourceAccounts" [(ngModel)]="selectedSourceAccount" 
+                optionLabel="name" [style]="{'width':'100%'}" [showClear]="true" ></p-dropdown>
+            </div>
         </fieldset>
         <fieldset class="form-group">
             <label>Recipient's Name / Account</label>
-            <input type="text" name="recNameAcc" required="required" class="form-control">
+            <div>
+                <p-dropdown  [options]="recipientAccounts" [(ngModel)]="selectedRecipientAccount" 
+                editable="true" optionLabel="name" [style]="{'width':'100%'}" ></p-dropdown>
+            </div>
         </fieldset>
         <fieldset class="form-group">
             <label>Receiving bank</label>
-            <input type="text" name="recBank" required="required" class="form-control">
+            <p-autoComplete [(ngModel)]="selectedRecipientBank" [style]="{'width':'100%'}"
+            field="name" [suggestions]="results" (completeMethod)="searchBanks($event)" [dropdown]="true"></p-autoComplete>
         </fieldset>
 
         <fieldset class="form-group">
             <label>Amount of money</label>
-            <input type="text" name="amount" required="required" class="form-control">
+            <p-inputNumber [(ngModel)]="moneyTranfer.amount" mode="currency" currency="USD" locale="en-US" [style]="{'width':'100%'}"></p-inputNumber>
         </fieldset>
 
         <fieldset class="form-group">
             <label>content</label>
-            <input type="text" name="content" required="required" class="form-control">
+            <textarea [rows]="5" [style]="{'width':'100%'}" pInputTextarea autoResize="autoResize" [(ngModel)]="moneyTranfer.content"></textarea>
         </fieldset>
 
         <fieldset class="form-group">
-            <label> Payer (receiver, sender)</label>
-            <input type="text" name="payer" required="required" class="form-control">
+            <label> Payer (receiver, sender)</label><br>
+            <!-- <input type="text" [(ngModel)]="moneyTranfer.payer" required="required" class="form-control"> -->
+            <p-radioButton [(ngModel)]="moneyTranfer.payer" value="Sender" label="Sender"></p-radioButton><br>
+            <p-radioButton [(ngModel)]="moneyTranfer.payer" value="Receiver" label="Receiver"></p-radioButton>
         </fieldset>
-        <button type="submit" class="btn btn-success">Save</button>
+        <button pButton pRipple type="button" icon="pi pi-check" iconPos="left"  label="Save" class="p-button-success" (click)="save()"></button>
     </div>
-</form>
+<!-- </form> -->

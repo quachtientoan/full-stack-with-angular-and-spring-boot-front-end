@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MoneyTranferComponent } from './money-tranfer/money-tranfer.component';
+import { MoneyTranferListComponent } from './money-tranfer-list/money-tranfer-list.component';
 
 const routes: Routes = [
   {path : '', component : LoginComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path : 'customer/:id', component : CustomerComponent, canActivate : [RouteGuardService]},
   {path : 'todo', component : TodosComponent, canActivate : [RouteGuardService]},
   {path : 'todo/:id', component : TodoComponent, canActivate : [RouteGuardService]},
-  {path : 'money-tranfer', component : MoneyTranferComponent, canActivate : [RouteGuardService]},
+  {path : 'money-tranfer', component : MoneyTranferListComponent, canActivate : [RouteGuardService]},
+  {path : 'money-tranfer/:id', component : MoneyTranferComponent, canActivate : [RouteGuardService]},
   {path : 'logout', component : LogoutComponent, canActivate : [RouteGuardService]},
   {path : '**', component : ErrorComponent}
 ];

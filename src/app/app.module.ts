@@ -19,7 +19,23 @@ import { TodoComponent } from './todo/todo.component';
 import { RegisterComponent } from './register/register.component';
 import { UploadFilesComponent } from './upload-files/upload-files.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MoneyTranferComponent } from './money-tranfer/money-tranfer.component'
+import { MoneyTranferComponent } from './money-tranfer/money-tranfer.component';
+import { CalendarModule } from 'primeng/calendar';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {DropdownModule} from 'primeng/dropdown';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import {InputNumberModule} from 'primeng/inputnumber';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {ButtonModule} from 'primeng/button';
+import {SplitButtonModule} from 'primeng/splitbutton';
+import {AutoCompleteModule} from 'primeng/autocomplete';
+import {ToastModule} from 'primeng/toast';
+import {MessageService} from 'primeng/api';
+import { ToastComponent } from './toast/toast.component';
+import {DialogModule} from 'primeng/dialog';
+import { MoneyTranferListComponent } from './money-tranfer-list/money-tranfer-list.component';
+
 
 @NgModule({
   declarations: [
@@ -36,17 +52,35 @@ import { MoneyTranferComponent } from './money-tranfer/money-tranfer.component'
     TodoComponent,
     RegisterComponent,
     UploadFilesComponent,
-    MoneyTranferComponent
+    MoneyTranferComponent,
+    ToastComponent,
+    MoneyTranferListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    CalendarModule,
+    BrowserAnimationsModule,
+    DropdownModule,
+    RadioButtonModule,
+    InputNumberModule,
+    InputTextareaModule,
+    ButtonModule,
+    SplitButtonModule,
+    AutoCompleteModule,
+    ToastModule,
+    DialogModule
+    
+   
+    
+   
   ],
   providers: [
-    {provide : HTTP_INTERCEPTORS, useClass : HttpIntercepteBasicAuthService, multi :true}
+    {provide : HTTP_INTERCEPTORS, useClass : HttpIntercepteBasicAuthService, multi :true},
+    MessageService
   ],
   bootstrap: [AppComponent]
 })
