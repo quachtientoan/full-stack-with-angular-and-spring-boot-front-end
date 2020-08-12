@@ -36,6 +36,16 @@ import { ToastComponent } from './toast/toast.component';
 import {DialogModule} from 'primeng/dialog';
 import { MoneyTranferListComponent } from './money-tranfer-list/money-tranfer-list.component';
 
+//--------
+
+
+import {TableModule} from 'primeng/table';
+import {SliderModule} from 'primeng/slider';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {ContextMenuModule} from 'primeng/contextmenu';
+import {InputTextModule} from 'primeng/inputtext';
+import {ProgressBarModule} from 'primeng/progressbar';
+
 
 @NgModule({
   declarations: [
@@ -72,9 +82,13 @@ import { MoneyTranferListComponent } from './money-tranfer-list/money-tranfer-li
     SplitButtonModule,
     AutoCompleteModule,
     ToastModule,
-    DialogModule
-    
-   
+    DialogModule,
+    TableModule,
+    SliderModule,
+    MultiSelectModule,
+    ContextMenuModule,
+    InputTextModule,
+    ProgressBarModule
     
    
   ],

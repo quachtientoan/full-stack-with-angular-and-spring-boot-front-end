@@ -1,1 +1,21 @@
 <p>money-tranfer-list works!</p>
+
+<p-table [value]="moneyTranfers">
+  <ng-template pTemplate="header">
+    <tr>Ngày chuyển tiền</tr>
+    <tr>Tài Khoản nguồn</tr>
+    <tr>Tên tài khoản người nhận</tr>
+    <tr>Ngân hàng nhận</tr>
+    <tr>Số tiền</tr>
+    <tr>Nội dung</tr>
+    <tr>Người trả phí</tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-moneyTranfer>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3/td>
+      <td>3</td>
+    </tr>
+  </ng-template>
+</p-table>
