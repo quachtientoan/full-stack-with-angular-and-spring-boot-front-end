@@ -4,51 +4,70 @@
     {{message}}
 </p-dialog>
 
-<!-- <button type="button" (click)="showDialog()" icon="pi pi-info-circle" label="Show">click show dialog</button> -->
-<!-- <form (ngSubmit)="!moneyTranferForm.invalid && save()" #moneyTranferForm="ngForm" class="moneyTranferForm"> -->
-    <div class="container moneyTranferForm" >
-        <fieldset class="form-group">
-            <label>Money transfer date</label>
-            <div>
-                <p-calendar [(ngModel)]="moneyTranfer.moneyTranferDate" dateFormat="dd/mm/yy" [style]="{'width':'100%'}" [showIcon]="true"></p-calendar>
-            </div>
-        </fieldset>   
-        <fieldset class="form-group">
-            <label>Source account</label>
-            <div>
-                <p-dropdown placeholder="Select a Account" [options]="sourceAccounts" [(ngModel)]="selectedSourceAccount" 
-                optionLabel="name" [style]="{'width':'100%'}" [showClear]="true" ></p-dropdown>
-            </div>
-        </fieldset>
-        <fieldset class="form-group">
-            <label>Recipient's Name / Account</label>
-            <div>
-                <p-dropdown  [options]="recipientAccounts" [(ngModel)]="selectedRecipientAccount" 
-                editable="true" optionLabel="name" [style]="{'width':'100%'}" ></p-dropdown>
-            </div>
-        </fieldset>
-        <fieldset class="form-group">
-            <label>Receiving bank</label>
-            <p-autoComplete [(ngModel)]="selectedRecipientBank" [style]="{'width':'100%'}"
-            field="name" [suggestions]="results" (completeMethod)="searchBanks($event)" [dropdown]="true"></p-autoComplete>
-        </fieldset>
+<div class="container moneyTranferForm">
+    <fieldset class="form-group">
+        <label>Money transfer date</label>
+        <div>
+            <p-calendar [(ngModel)]="moneyTranferView.moneyTranferDate" dateFormat="dd/mm/yy" [style]="{'width':'100%'}"
+                [showIcon]="true" [ngModelOptions]="{standalone: true}"></p-calendar>
+        </div>
+    </fieldset>
 
-        <fieldset class="form-group">
-            <label>Amount of money</label>
-            <p-inputNumber [(ngModel)]="moneyTranfer.amount" mode="currency" currency="USD" locale="en-US" [style]="{'width':'100%'}"></p-inputNumber>
-        </fieldset>
+    <fieldset class="form-group">
+        <label>Source account</label>
+        <div>
+            <p-dropdown placeholder="Select a Account" [options]="sourceAccounts" [(ngModel)]="selectedSourceAccount"
+                optionLabel="name" [style]="{'width':'100%'}" [showClear]="true"></p-dropdown>
+        </div>
+        <small class="p-invalid" *ngIf="submitted && !moneyTranferView.sourceAccountEntity">Source Account is
+            required.</small>
+    </fieldset>
 
-        <fieldset class="form-group">
-            <label>content</label>
-            <textarea [rows]="5" [style]="{'width':'100%'}" pInputTextarea autoResize="autoResize" [(ngModel)]="moneyTranfer.content"></textarea>
-        </fieldset>
+    <fieldset class="form-group">
+        <label>Recipient's Name / Account</label>
+        <div>
+            <p-dropdown placeholder="Select a Account" [options]="recipientAccounts"
+                [(ngModel)]="selectedRecipientAccount" optionLabel="name" [style]="{'width':'100%'}" [showClear]="true">
+            </p-dropdown>
+        </div>
+        <small class="p-invalid" *ngIf="submitted && !moneyTranferView.recipientAccountEntity">Recipient's Name /
+            Account is required.</small>
+    </fieldset>
 
-        <fieldset class="form-group">
-            <label> Payer (receiver, sender)</label><br>
-            <!-- <input type="text" [(ngModel)]="moneyTranfer.payer" required="required" class="form-control"> -->
-            <p-radioButton [(ngModel)]="moneyTranfer.payer" value="Sender" label="Sender"></p-radioButton><br>
-            <p-radioButton [(ngModel)]="moneyTranfer.payer" value="Receiver" label="Receiver"></p-radioButton>
-        </fieldset>
-        <button pButton pRipple type="button" icon="pi pi-check" iconPos="left"  label="Save" class="p-button-success" (click)="save()"></button>
-    </div>
-<!-- </form> -->
+    <fieldset class="form-group">
+        <label>Receiving bank</label>
+        <div>
+            <p-autoComplete [(ngModel)]="selectedRecipientBank" placeholder="Select a Bank" [style]="{'width':'100%'}"
+                field="name" [suggestions]="results" (completeMethod)="searchBanks($event)" [dropdown]="true">
+            </p-autoComplete>
+        </div>
+        <small class="p-invalid" *ngIf="submitted && !moneyTranferView.bankEntity">Receiving bank is required.</small>
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label>Amount of money</label>
+        <div>
+            <p-inputNumber [(ngModel)]="moneyTranferView.amount" mode="currency" currency="USD" locale="en-US"
+            [style]="{'width':'100%'}"></p-inputNumber>
+        </div>
+        <small class="p-invalid" *ngIf="submitted && !moneyTranferView.amount">Amount of money is required.</small>
+        <small class="p-invalid" *ngIf="submitted && isMaxAmount"> {{message}} </small>
+    </fieldset>
+
+
+    <fieldset class="form-group">
+        <label>content</label>
+        <textarea [rows]="5" [style]="{'width':'100%'}" pInputTextarea autoResize="autoResize"
+            [(ngModel)]="moneyTranferView.content"></textarea>
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label> Payer (receiver, sender)</label><br>
+        <p-radioButton [(ngModel)]="moneyTranferView.payer" value="Sender" label="Sender" inputId="Sender">
+        </p-radioButton><br>
+        <p-radioButton [(ngModel)]="moneyTranferView.payer" value="Receiver" label="Receiver" inputId="Receiver">
+        </p-radioButton>
+    </fieldset>
+    <button pButton pRipple type="button" icon="pi pi-check" iconPos="left" label="Save" class="p-button-success"
+        (click)="save()"></button>
+</div>

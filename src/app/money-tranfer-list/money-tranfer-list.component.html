@@ -1,21 +1,62 @@
-<p>money-tranfer-list works!</p>
+<h1>Money Transfer!</h1>
 
-<p-table [value]="moneyTranfers">
-  <ng-template pTemplate="header">
-    <tr>Ngày chuyển tiền</tr>
-    <tr>Tài Khoản nguồn</tr>
-    <tr>Tên tài khoản người nhận</tr>
-    <tr>Ngân hàng nhận</tr>
-    <tr>Số tiền</tr>
-    <tr>Nội dung</tr>
-    <tr>Người trả phí</tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-moneyTranfer>
-    <tr>
-      <td>1</td>
-      <td>2</td>
-      <td>3/td>
-      <td>3</td>
-    </tr>
-  </ng-template>
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+<div class="moneyTranferList">
+
+  <p-table #dt [value]="moneyTranfers" [lazy]="true" (onLazyLoad)="loadTrans($event)" [paginator]="true" [rows]="10"
+    [totalRecords]="totalRecords" [loading]="loading" [showCurrentPageReport]="true"
+    styleClass="p-datatable-lg p-datatable-striped" 
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
+    [scrollable]="true" scrollHeight="400px"
+    selectionMode="single" [(selection)]="selectedMoneyTranfer" dataKey="id"
+    >
+
+    <ng-template pTemplate="caption">
+
+      <div class="p-d-flex p-ai-center p-jc-between">
+        <button pButton pRipple type="button" icon="pi pi-plus" iconPos="left" label="New" class="p-button-rounded p-button-success p-mr-2"
+          (click)="createNew()"></button>
+
+          <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" 
+          (click)="deleteSelectedTrans(selectedMoneyTranfer)" [disabled]="!selectedMoneyTranfer || !selectedMoneyTranfer.length"></button>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <th style="width: 3em">
+        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+    </th>
+      <th pSortableColumn="moneyTranferDate">Ngày chuyển tiền <p-sortIcon field="moneyTranferDate"></p-sortIcon></th>
+      <th pSortableColumn="sourceAccountName">Tài Khoản nguồn <p-sortIcon field="sourceAccountName"></p-sortIcon></th>
+      <th pSortableColumn="recipientAccountName">Tên tài khoản người nhận <p-sortIcon field="recipientAccountName"></p-sortIcon></th>
+      <th pSortableColumn="bankName">Ngân hàng nhận <p-sortIcon field="bankName"></p-sortIcon></th>
+      <th pSortableColumn="amount">Số tiền <p-sortIcon field="amount"></p-sortIcon></th>
+      <th pSortableColumn="content">Nội dung <p-sortIcon field="content"></p-sortIcon></th>
+      <th pSortableColumn="payer">Người trả phí <p-sortIcon field="payer"></p-sortIcon></th>
+      <th></th>
+    </ng-template>
+    <ng-template pTemplate="body" let-moneyTranfer>
+      <tr>
+        <th style="width: 3em">
+          <p-tableCheckbox [value]="moneyTranfer"></p-tableCheckbox>
+      </th>
+        <td>{{moneyTranfer.moneyTranferDateStr}}</td>
+        <td>{{moneyTranfer.sourceAccountEntity.name}}</td>
+        <td>{{moneyTranfer.recipientAccountEntity.name}}</td>
+        <td>{{moneyTranfer.bankEntity.name}}</td>
+        <td>{{moneyTranfer.amount | currency: 'USD'}}</td>
+        <td>{{moneyTranfer.content}}</td>
+        <td>{{moneyTranfer.payer}}</td>
+        <td>
+          <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editTrans(moneyTranfer)"></button>
+          <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteTrans(moneyTranfer)"></button>
+      </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+          In total there are {{moneyTranfers ? moneyTranfers.length : 0 }} products.
+</div>
+</ng-template>
 </p-table>
+</div>

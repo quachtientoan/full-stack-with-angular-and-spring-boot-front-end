@@ -1,3 +1,4 @@
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { HttpIntercepteBasicAuthService } from './service/http/http-intercepte-basic-auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -35,17 +36,13 @@ import {MessageService} from 'primeng/api';
 import { ToastComponent } from './toast/toast.component';
 import {DialogModule} from 'primeng/dialog';
 import { MoneyTranferListComponent } from './money-tranfer-list/money-tranfer-list.component';
-
-//--------
-
-
 import {TableModule} from 'primeng/table';
 import {SliderModule} from 'primeng/slider';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {ContextMenuModule} from 'primeng/contextmenu';
 import {InputTextModule} from 'primeng/inputtext';
 import {ProgressBarModule} from 'primeng/progressbar';
-
+// import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -88,8 +85,8 @@ import {ProgressBarModule} from 'primeng/progressbar';
     MultiSelectModule,
     ContextMenuModule,
     InputTextModule,
-    ProgressBarModule
-    
+    ProgressBarModule,
+    ConfirmDialogModule
    
   ],
   providers: [
