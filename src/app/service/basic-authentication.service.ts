@@ -6,6 +6,7 @@ import { API_URL } from '../app.constant';
 
 export const TOKEN = 'token'
 export const AUTHENTICATED_USER ='authenticateUser'
+export const USER_ROLE ='role'
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,8 @@ export class BasicAuthenticationService {
        map(
          data => {
           sessionStorage.setItem(AUTHENTICATED_USER, username);
-          sessionStorage.setItem(TOKEN, `Bearer ${data.token}` )
+          sessionStorage.setItem(TOKEN, `Bearer ${data.token}`)
+          sessionStorage.setItem(USER_ROLE, data.roles);
           return data;
          }
        )
@@ -67,6 +69,12 @@ export class BasicAuthenticationService {
     }
   }
 
+  getAuthenticateRole() {
+    if(this.getAuthenticateUser()){
+      return sessionStorage.getItem(USER_ROLE);
+    }
+  }
+
   isUserLoggedIn() {
     let user = sessionStorage.getItem(AUTHENTICATED_USER);
     return !(user === null)
@@ -75,6 +83,7 @@ export class BasicAuthenticationService {
   logout() {
     sessionStorage.removeItem(AUTHENTICATED_USER);
     sessionStorage.removeItem(TOKEN);
+    sessionStorage.removeItem(USER_ROLE);
   }
 }
 

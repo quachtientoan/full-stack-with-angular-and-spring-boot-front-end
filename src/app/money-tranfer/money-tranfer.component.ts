@@ -74,7 +74,7 @@ export class MoneyTranferComponent implements OnInit {
     )
 
     this.id = this.activatedRouter.snapshot.params['id']
-    this.moneyTranferView = { id: null, moneyTranferDate: new Date, amount: null, content: '', payer: 'Sender', recipientAccountEntity: null, sourceAccountEntity: null, bankEntity: null, moneyTranferDateStr: '' }
+    this.moneyTranferView = { id: null, moneyTranferDate: new Date, amount: null, content: '', payer: 'Sender', recipientAccountEntity: null, sourceAccountEntity: null, bankEntity: null, moneyTranferDateStr: '',status : 'Khởi tạo' }
     if (this.id != -1) {
       this.moneyTranferService.getOne(`admin`, this.id).subscribe(
         response => {

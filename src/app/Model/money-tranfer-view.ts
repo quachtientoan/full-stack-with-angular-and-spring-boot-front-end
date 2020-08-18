@@ -10,5 +10,6 @@ export interface MoneyTranferView{
     amount : number,
     content : string,
     payer : string,
-    moneyTranferDateStr : string
+    moneyTranferDateStr : string,
+    status : string
 }
