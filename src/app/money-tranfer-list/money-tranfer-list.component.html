@@ -5,8 +5,8 @@
   <p-table #dt [value]="moneyTranfers" [lazy]="true" (onLazyLoad)="loadTrans($event)" [paginator]="true" [rows]="rows"
     styleClass="p-datatable-lg p-datatable-striped" [totalRecords]="totalRecords" [loading]="loading"
     [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} transactions"
-    [rowsPerPageOptions]="[5,10,25,50]" [scrollable]="true" scrollHeight="400px" [resetPageOnSort]="false" selectionMode="single"
-    [(selection)]="selectedMoneyTranfer">
+    [rowsPerPageOptions]="[5,10,25,50]" [scrollable]="true" scrollHeight="400px" [resetPageOnSort]="false"
+    selectionMode="single" [(selection)]="selectedMoneyTranfer">
 
     <ng-template pTemplate="caption">
       <div class="p-d-flex p-ai-center p-jc-between">
@@ -25,18 +25,19 @@
     </ng-template>
 
     <ng-template pTemplate="header">
-      <th style="width: 3em">
-        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-      </th>
-      <th>Ngày chuyển tiền </th>
-      <th>Tài Khoản nguồn </th>
-      <th>Tên tài khoản người nhận </th>
-      <th>Ngân hàng nhận</th>
-      <th>Số tiền </th>
-      <th>Nội dung </th>
-      <th>Người trả phí </th>
-      <th>Trạng thái giao dịch</th>
-      <th></th>
+        <th style="width: 3em">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th>Ngày chuyển tiền </th>
+        <th>Tài Khoản nguồn </th>
+        <th>Tên tài khoản người nhận </th>
+        <th>Ngân hàng nhận</th>
+        <th>Số tiền </th>
+        <th>Nội dung </th>
+        <th>Người trả phí </th>
+        <th>Trạng thái giao dịch</th>
+        <th></th>
+      
     </ng-template>
     <ng-template pTemplate="body" let-moneyTranfer>
       <tr>
